@@ -242,7 +242,33 @@
     <section>
       <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Integrated MongoDb support</h2></div>
       <div>
-        TBD
+        <p>The same database API works on both the client and the server. The API is compatible with the Mongo database API.</p>
+        <pre><code class="coffeescript">
+# common code on client and server declares a DDP-managed mongo collection
+Messages = new Mongo.Collection "messages"
+
+# return array of my messages (here, in client code)
+myMessages = Messages.find({userId: Meteor.userId()}).fetch()
+
+# create a new message
+Messages.insert {text: "Hello, world!"}
+
+# mark my first message as "important"
+Messages.update myMessages[0]._id, {$set: {important: true}}
+        </code></pre>
+        <p class="citation"><small>see <a href="http://docs.meteor.com/#/full/mongo_collection">docs.meteor.com/#/full/mongo_collection</a></small></p>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Integrated MongoDb support</h2></div>
+      <div>
+        <ul>
+          <li>On the server, when you call methods on a collection, they translate directly into normal Mongo operations (after checking that they match your access control rules).</li>
+          <li>On the client, Minimongo is essentially an in-memory, non-persistent implementation of Mongo in pure JavaScript. It serves as a local cache that stores just the subset of the database that this client is working with.</li>
+          <li>When you write to the db on the client, the command is executed locally immediately, and, simultaneously, it's sent to the server and executed there too.</li>
+        </ul>
+        <p class="citation"><small>see <a href="http://docs.meteor.com/#/full/mongo_collection">docs.meteor.com/#/full/mongo_collection</a></small></p>
       </div>
     </section>
 
