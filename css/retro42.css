@@ -1,4 +1,12 @@
-.reveal  .smaller {
+.reveal .citation {
+	font-style: italic;
+}
+
+.reveal .highlight {
+	color: yellow;
+}
+
+.reveal .smaller {
 	font-size: smaller;
 }
 
@@ -42,15 +50,15 @@
 
 @media only screen {
 	#title-box:before, #title-box:after {
-		z-index: -1; 
-		position: absolute; 
+		z-index: -1;
+		position: absolute;
 		content: "";
 		bottom: 15px;
 		left: 10px;
-		width: 50%; 
+		width: 50%;
 		top: 80%;
 		max-width:300px;
-		background: rgba(0, 0, 0, 0.7); 
+		background: rgba(0, 0, 0, 0.7);
 		box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 		transform: rotate(-3deg);
 	}
@@ -70,6 +78,5 @@
   -moz-border-radius: 4px;
   border-radius: 4px;
   margin: 20px 15%;
-  width: 70%;  
+  width: 70%;
 }
-

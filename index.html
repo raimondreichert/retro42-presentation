@@ -2,133 +2,350 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <title>Webtests und JMeter</title>
+  <title>Meteor: Fullstack JavaScript Development</title>
 
-    <meta name="author" content="Raimond Reichert">
+  <meta name="author" content="Raimond Reichert, Samuel Zurcher">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="css/retro42.css">
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
 
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css" id="theme">
-    <link rel="stylesheet" href="css/retro42.css">
-
-    <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
-
-    <!-- Printing and PDF exports -->
-    <script>
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
-
-    <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
-    <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
 </head>
 
 <body>
 <div class="reveal">
-    <!-- Any section element inside of this container is displayed as a slide -->
-    <div class="slides">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
 
-        <!-- =================================================================================== -->
-        <section>
-            <div id="title-box"><h1>Retro42</h1></div>
-            <ul>
-                <li>TODO</li>
-            </ul>
-            <p>
-                <small>Raimond Reichert, Samuel Zürcher</small>
-            </p>
-        </section>
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h1 style="margin-bottom:0">Meteor</h1><h2>Fullstack JavaScript Development</h2></div>
+      <ul>
+        <li>Retro42: Our prototype application</li>
+        <li>Why we chose Meteor</li>
+        <li>What is Meteor?</li>
+        <li>Show me some code!</li>
+        <li>How we compare Meteor to MEAN</li>
+      </ul>
+      <p><small>Raimond Reichert, Samuel Zürcher, Ergon Informatik AG</small></p>
+    </section>
 
-        <!-- =================================================================================== -->
-        <section>
-            <div id="title-box">
-                <h2>Meteor: Finding files</h2>
+    <!-- =================================================================================== -->
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h1 style="margin-bottom:0">Meteor</h1><h2>Fullstack JavaScript Development</h2></div>
+      <ul>
+        <li class="highlight">Retro42: Our prototype application</li>
+        <li>Why we chose Meteor</li>
+        <li>What is Meteor?</li>
+        <li>Show me some code!</li>
+        <li>How we compare Meteor to MEAN</li>
+      </ul>
+    </section>
 
-                <p>No matter where you put your code in the /client directory, Meteor
-                    will find it and compile it properly.</p>
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h2>Retro42: Our prototype application</h2></div>
+      <div>
+        <p>Our motivation for building Retro42</p>
+        <ul>
+          <li>Change begins with settings goals and tracking how you do on them.</li>
+          <li>Retro42 lets you define and schedule questionnaires for yourself, or for your team.</li>
+          <li>Retro42 helps you track your answers, and visualizes them for you.</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <section>
+        <div id="title-box"><h2>Retro 42: Demo Screenshots</h2></div>
+        <p>Start from an existing questionnaire template...</p>
+        <img width="80%" src="https://retro42.herokuapp.com/images/intro/templates.png" />
+        <p><small>Arrow-down to see more...</small></p>
+      </section>
+      <section>
+        <div id="title-box"><h2>Retro 42: Demo Screenshots</h2></div>
+        <p>... or create a questionnaire from scratch.</p>
+        <img width="80%" src="https://retro42.herokuapp.com/images/intro/create-questionnaire.png" />
+      </section>
+      <section>
+        <div id="title-box"><h2>Retro 42: Demo Screenshots</h2></div>
+        <p>Define your schedule for answering your questionnaire.</p>
+        <img width="80%" src="https://retro42.herokuapp.com/images/intro/create-schedule.png" />
+      </section>
+      <section>
+        <div id="title-box"><h2>Retro 42: Demo Screenshots</h2></div>
+        <p>TBD</p>
+      </section>
+    </section>
 
-                <p>Code inside folders that are not client/ or server/ (e.g. lib/) will run in both contexts.</p>
+    <!-- =================================================================================== -->
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h1 style="margin-bottom:0">Meteor</h1><h2>Fullstack JavaScript Development</h2></div>
+      <ul>
+        <li>Retro42: Our prototype application</li>
+        <li class="highlight">Why we chose Meteor</li>
+        <li>What is Meteor?</li>
+        <li>Show me some code!</li>
+        <li>How we compare Meteor to MEAN</li>
+      </ul>
+    </section>
 
-                <p>This means you never need to manually write include paths for
-                    JavaScript or CSS files.</p>
-            </div>
-        </section>
+    <section>
+      <div id="title-box"><p class="no-margin">Why we chose Meteor</p><h2>Integrated development plattform</h2></div>
+      <div>
+        <img src="images/meteor-diy-comparison.png" width="60%"/>
+        <p class="citation"><small>from <a href="http://www.forbes.com/sites/anthonykosner/2015/06/30/meteor-is-the-app-platform-for-the-new-world-of-cloud-client-computing/2/">www.forbes.com/sites/anthonykosner/2015/06/30/meteor-is-the-app-platform-for-the-new-world-of-cloud-client-computing</a></small></p>
+      </div>
+    </section>
 
-        <!-- =================================================================================== -->
-        <section>
-            <div id="title-box">
-                <h2>Meteor: Templates using Spacebars</h2>
-            </div>
+    <section>
+      <div id="title-box"><p class="no-margin">Why we chose Meteor</p><h2>Principles of particular interest</h2></div>
+      <div>
+        <ul>
+          <li>Full-stack JavaScript (or CoffeeScript, for us), for both backend and frontend</li>
+          <li>Meteor's <span class="highlight">database everywhere</span> principle makes it easy to build apps on top of databases</li>
+          <li>We wanted to see Meteor's <span class="highlight">latency compensation</span> principle in action.</li>
+          <li>It advertices <span class="highlight">fast and fun development</span>, and who wouldn't like that:-)</li>
+        </ul>
+      </div>
+    </section>
 
-            <p>Spacebars is simply HTML, with the addition of three things: </p>
-            <ul>
-                <li><strong>Inclusions</strong> use the {{> templateName}} syntax, and simply tell Meteor to replace
-                    the inclusion with the template of the same name.
-                </li>
-                <li><strong>Expressions</strong> such as {{title}} either call a property of the current object, or
-                    the return value of a template helper as defined in the current template’s helper.
-                </li>
-                <li><strong>Template helpers</strong> are special tags that control the flow of the template, such
-                    as {{#each}} ... {{/each}} or {{#if}}...{{/if}}.
-                </li>
-            </ul>
-        </section>
 
-        <!-- =================================================================================== -->
-        <section>
-            <div id="title-box">
-                <h2>Meteor: Templates example</h2>
-            </div>
+    <!-- =================================================================================== -->
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h1 style="margin-bottom:0">Meteor</h1><h2>Fullstack JavaScript Development</h2></div>
+      <ul>
+        <li>Retro42: Our prototype application</li>
+        <li>Why we chose Meteor</li>
+        <li class="highlight">What is Meteor?</li>
+        <li>Show me some code!</li>
+        <li>How we compare Meteor to MEAN</li>
+      </ul>
+    </section>
 
-            <p>In this example, url and title come from a "post" object, whereas domain is a call to a template
-                helper function:</p>
-            <pre><code class="html">
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Command line tool</h2></div>
+      <div>
+        <ul>
+          <li><code style="font-weight: bolder">meteor add &lt;package name&gt;</code><br/>Add a package to your Meteor project.</li>
+          <li><code style="font-weight: bolder">meteor run</code><br/>Serve the current app at http://localhost:3000 using Meteor's local development server. <br/>Also continuously runs tests if Velocity package has been added to your project.</li>
+          <li><code style="font-weight: bolder">meteor reset</code><br/>Reset the current project to a fresh state.<br/> Removes all local data.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Its own build system</h2></div>
+      <div>
+        <ul>
+          <li>For example, <code style="font-weight: bolder">meteor add coffeescript</code> adds CoffeeScript support to your project &ndash; that's it</li>
+          <li>Client vs server: Adding a package works seamlessly on both the client and the server.</li>
+          <li>Asset building and bundling: The package system integrates with Meteor's asset building/bundling system.</li>
+          <li>"We feel strongly that every package in your app should be always pinned to a specific version, and those version pins should be checked into source control."</li>
+        </ul>
+      </div>
+      <p class="citation"><small>see <a href="http://www.quora.com/Node-js/Why-does-Meteor-use-its-own-package-system-rather-than-NPM">quora.com/Node-js/Why-does-Meteor-use-its-own-package-system-rather-than-NPM</a></small></p>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Full-stack package system</h2></div>
+      <div>
+        <img src="images/atmospherejs.png" width="90%"/>
+        <p class="citation"><small>see <a href="https://atmospherejs.com/">atmospherejs.com</a></small></p>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Integrated MongoDb support</h2></div>
+      <div>
+        TBD
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Livequery: Latency Compensation</h2></div>
+      <div>
+        <img src="images/optimistic-ui-latency-compensation.png" width="70%"/>
+        <p class="citation"><small>from <a href="http://info.meteor.com/blog/optimistic-ui-with-meteor-latency-compensation">info.meteor.com/blog/optimistic-ui-with-meteor-latency-compensation</a></small></p>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>View: e.g. Blaze</h2></div>
+      <div>
+        TBD
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>View: e.g. Angular</h2></div>
+      <div>
+        TBD
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Integrated development plattform</h2></div>
+      <div>
+        <img src="images/meteor-platform.png" width="60%"/>
+        <p class="citation"><small>from <a href="https://meteor.hackpad.com/Meteor-speaker-kit-uaPe3zDDH8z">meteor.hackpad.com/Meteor-speaker-kit-uaPe3zDDH8z</a></small></p>
+      </div>
+    </section>
+
+
+    <!-- =================================================================================== -->
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h1 style="margin-bottom:0">Meteor</h1><h2>Fullstack JavaScript Development</h2></div>
+      <ul>
+        <li>Retro42: Our prototype application</li>
+        <li>Why we chose Meteor</li>
+        <li>What is Meteor?</li>
+        <li class="highlight">Show me some code!</li>
+        <li>How we compare Meteor to MEAN</li>
+      </ul>
+    </section>
+
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h2>Show me some code! "Slide coding"</h2></div>
+      <div>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </section>
+
+
+
+    <!-- =================================================================================== -->
+    <!-- =================================================================================== -->
+    <section>
+      <div id="title-box"><h1 style="margin-bottom:0">Meteor</h1><h2>Fullstack JavaScript Development</h2></div>
+      <ul>
+        <li>Retro42: Our prototype application</li>
+        <li>Why we chose Meteor</li>
+        <li>What is Meteor?</li>
+        <li>Show me some code!</li>
+        <li class="highlight">How we compare Meteor to MEAN</li>
+      </ul>
+    </section>
+
+    <section>
+      <div id="title-box"><h2>How we compare Meteor to MEAN</h2></div>
+      <div>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><h2>Learn more about Meteor</h2></div>
+      <div>
+        <img src="images/discover-meteor.jpg" />
+        <p class="citation"><small>see <a href="https://www.discovermeteor.com/">discovermeteor.com</a>, and <a href="https://www.meteor.com/">meteor.com</a></small></p>
+      </div>
+    </section>
+
+
+
+    <!-- =================================================================================== -->
+    <section>
+        <div id="title-box">
+            <h2>Meteor: Finding files</h2>
+
+            <p>No matter where you put your code in the /client directory, Meteor
+                will find it and compile it properly.</p>
+
+            <p>Code inside folders that are not client/ or server/ (e.g. lib/) will run in both contexts.</p>
+
+            <p>This means you never need to manually write include paths for
+                JavaScript or CSS files.</p>
+        </div>
+    </section>
+
+    <!-- =================================================================================== -->
+    <section>
+        <div id="title-box">
+            <h2>Meteor: Templates using Spacebars</h2>
+        </div>
+
+        <p>Spacebars is simply HTML, with the addition of three things: </p>
+        <ul>
+            <li><strong>Inclusions</strong> use the {{> templateName}} syntax, and simply tell Meteor to replace
+                the inclusion with the template of the same name.
+            </li>
+            <li><strong>Expressions</strong> such as {{title}} either call a property of the current object, or
+                the return value of a template helper as defined in the current template’s helper.
+            </li>
+            <li><strong>Template helpers</strong> are special tags that control the flow of the template, such
+                as {{#each}} ... {{/each}} or {{#if}}...{{/if}}.
+            </li>
+        </ul>
+    </section>
+
+    <!-- =================================================================================== -->
+    <section>
+        <div id="title-box">
+            <h2>Meteor: Templates example</h2>
+        </div>
+
+        <p>In this example, url and title come from a "post" object, whereas domain is a call to a template
+            helper function:</p>
+        <pre><code class="html">
 <template name="postItem">
-   <div class="post">
-       <div class="post-content">
-           <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-       </div>
+<div class="post">
+   <div class="post-content">
+       <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
    </div>
+</div>
 </template>
-            </code></pre>
-            <pre><code class="coffeescript">
+        </code></pre>
+        <pre><code class="coffeescript">
 Template.postItem.helpers
-  domain: () ->
-    a = _createLink this.url
-    a.hostname
-            </code></pre>
-        </section>
+domain: () ->
+a = _createLink this.url
+a.hostname
+        </code></pre>
+    </section>
 
-        <!-- =================================================================================== -->
-        <section>
-            <div id="title-box">
-                <h2>Meteor: Collections</h2>
-            </div>
+    <!-- =================================================================================== -->
+    <section>
+        <div id="title-box">
+            <h2>Meteor: Collections</h2>
+        </div>
 
-            <p>Declaring collection e.g. in lib/collections/posts.js: Posts = new Mongo.Collection('posts');</p>
+        <p>Declaring collection e.g. in lib/collections/posts.js: Posts = new Mongo.Collection('posts');</p>
 
-            <ul>
-                <li>Server-side: the collection acts as an API into your Mongo database</li>
-                <li>Client-side: the collection is a local, in-browser cache of the real Mongo collection. Meteor’s
-                    client-side Mongo implementation is called MiniMongo.
-                </li>
-            </ul>
+        <ul>
+            <li>Server-side: the collection acts as an API into your Mongo database</li>
+            <li>Client-side: the collection is a local, in-browser cache of the real Mongo collection. Meteor’s
+                client-side Mongo implementation is called MiniMongo.
+            </li>
+        </ul>
 
-        </section>
-
-    </div>
+    </section>
+  </div>
 </div>
 
 <script src="lib/js/head.min.js"></script>
