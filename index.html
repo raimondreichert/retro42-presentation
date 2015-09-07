@@ -364,15 +364,190 @@ Template.postItem.helpers
       </ul>
     </section>
 
-    <!-- =================================================================================== -->
     <section>
-      <div id="title-box"><h2>Show me some code! "Slide coding"</h2></div>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Implementing "lessons learned"</h2></div>
+      <p>Let user add lessons learned to a questionnaire:</p>
       <div>
+        <img src="images/lessons-learned-empty.png" width="80%"/>
+      </div>
+    </section>
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Implementing "lessons learned"</h2></div>
+      <p>Display lessons learned of a questionnaire:</p>
+      <div>
+        <img src="images/lessons-learned.png" width="80%"/>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Include with Blaze, Spacebars</h2></div>
+      <div>
+        <pre><code class="html" data-trim>
+<template name="questionnairePasses">
+  {{> _questionnaireTitleDescription}}
+  <!-- left out: display questionnaire questions -->
+  {{> _questionnaireButtons}}
+
+  {{> lessonsLearnedTemplate questionnaireId=_id}}
+
+  <!-- left out: display questionnaire passes -->
+</template>
+        </code></pre>
         <ul>
-          <li></li>
+          <li>We include the <code class="code-inline">lessonsLearnedTemplate</code> in the <code class="code-inline">questionnairePasses</code> template.</li>
+          <li>We pass this questionnaire's <code class="code-inline">_id</code> as <code class="code-inline">questionnaireId</code>.</li>
         </ul>
       </div>
     </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Display with Blaze, Spacebars</h2></div>
+      <div>
+        <pre><code class="html" data-trim>
+&lt;template name="lessonsLearnedTemplate"&gt;
+  &lt;h2&gt;{{_ 'lessonsLearnedTemplate.title'}}&lt;/h2&gt;
+  {{#if lessonsLearned}}
+    &lt;table class="..." id="lessonsLearnedTable"&gt;
+      &lt;tbody&gt;
+      {{#each lessonsLearned}}
+        <&lt;!-- next slide --&gt;
+      {{/each}}
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  {{/if}}
+&lt;/template&gt;
+        </code></pre>
+        <ul>
+          <li>The template name <code class="code-inline">lessonsLearnedTemplate</code> is the key which we will use in our CoffeeScript code.</li>
+          <li><code class="code-inline">{{_ 'key'}}</code> is i18n with Meteor package tap:i18n.</li>
+          <li>We left out some of the table markup (thead).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Display with Blaze, Spacebars</h2></div>
+      <div>
+        <pre><code class="html" data-trim>
+{{#each lessonsLearned}}
+  &lt;tr&gt;
+    &lt;td class="createdAt"&gt;{{createdAtAbsolute}} {{createdAtRelative}}&lt;/td&gt;
+    &lt;td class="text"&gt;{{text}}&lt;/td&gt;
+    &lt;td class="actions"&gt;
+      &lt;a href="#"
+            class="deleteLessonLearned btn btn-default btn-sm"&gt;
+        {{_ 'lessonsLearnedTemplate.delete'}}
+      &lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+{{/each}}
+        </code></pre>
+        <ul>
+          <li>Examples of calling a template helper function: <code class="code-inline">lessonsLearned, createdAtAbsolute</code>.</li>
+          <li>Example of looking up a value in current scope: <code class="code-inline">text</code>.</li>
+          <li>Iterating with <code class="code-inline">{{#each lessonsLearned}}</code> creates a new <code class="code-inline">this</code> scope for each document in the collection.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Template helper functions</h2></div>
+      <div>
+        <pre><code class="coffeescript" data-trim>
+Template.lessonsLearnedTemplate.helpers
+  lessonsLearned: () ->
+    LessonsLearned.find({questionnaireId: this.questionnaireId},
+      {sort: {createdAt: -1}}).fetch()
+
+  createdAtAbsolute: () ->
+    moment(this.createdAt).format('YYYY-MM-DD HH:mm')
+
+  createdAtRelative: () ->
+    moment(this.createdAt).fromNow()
+        </code></pre>
+        <ul>
+          <li>Get the questionnaire id for which to show lessons learned: <code class="code-inline">this.questionnaireId</code>.</li>
+          <li>Use Meteors livequery to read from the <code class="code-inline">LessonsLearned</code> collection.</li>
+          <li>Note that the <code class="code-inline">this</code> scope for the helper functions <code class="code-inline">createdAt*</code> is a lesson learned document.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Defining collections</h2></div>
+      <div>
+        <pre><code class="coffeescript" data-trim>
+@LessonsLearned = new Mongo.Collection 'lessons_learned'
+
+LessonsLearned.allow
+  insert: (userId) ->
+    userId is Meteor.userId()
+  remove: (userId, lessonLearned) ->
+    userId? and (userId is lessonLearned.userId)
+        </code></pre>
+        <ul>
+          <li>Create a new collection with <code class="code-inline">new Mongo.Collection 'lessons_learned'</code>. On the server, this sets up a MongoDB collection called my-collection; on the client, this creates a cache connected to the server collection.</li>
+          <li>Define conditions which allow insertion and removal of lessons learned documents.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Publishing / subscribe to data</h2></div>
+      <div>
+        <pre><code class="coffeescript" data-trim>
+# server-side only code
+Meteor.publish 'lessons_learned', (questionnaireId) ->
+  check questionnaireId, String
+  LessonsLearned.find(
+    {questionnaireId: questionnaireId, userId: this.userId},
+    {sort: {createdAt: -1}}
+        </code></pre>
+
+        <pre><code class="coffeescript" data-trim>
+# server- and client-side code
+Router.route '/questionnaires/:_id/passes', {
+  name: 'questionnairePasses'
+  waitOn: () -> [
+    Meteor.subscribe 'questionnaire', this.params._id
+    Meteor.subscribe 'lessons_learned', this.params._id
+    Meteor.subscribe 'questionnaire_passes', this.params._id
+  ]
+  data: () -> Questionnaires.findOne this.params._id
+}
+        </code></pre>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Using events for adding, deleting</h2></div>
+      <div>
+        <pre><code class="html" data-trim>
+<template name="lessonsLearnedTemplate">
+  <h2>{{_ 'lessonsLearnedTemplate.title'}}</h2>
+  <!-- display code from previous slides -->
+  <form id="addLessonLearned"> <!-- we left out some Bootstrap markup -->
+    <input type="text" name="text">
+  </form>
+</template>
+        </code></pre>
+
+        <pre><code class="coffeescript" data-trim>
+Template.lessonsLearnedTemplate.events
+  'submit #addLessonLearned': (event) ->
+    event.preventDefault()
+    LessonsLearned.insert
+      questionnaireId: this.questionnaireId
+      userId: Meteor.userId()
+      text: event.target.text.value
+    event.target.text.value = ''
+
+  'click .deleteLessonLearned': () ->
+    LessonsLearned.remove this._id
+        </code></pre>
+      </div>
+    </section>
+
 
 
 
