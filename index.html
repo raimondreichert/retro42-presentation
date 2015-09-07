@@ -502,18 +502,19 @@ LessonsLearned.allow
     </section>
 
     <section>
-      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Publishing / subscribe to data</h2></div>
-      <div>
-        <pre><code class="coffeescript" data-trim>
+      <section>
+        <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Publishing / subscribe to data</h2></div>
+        <div>
+          <pre><code class="coffeescript" data-trim>
 # server-side only code
 Meteor.publish 'lessons_learned', (questionnaireId) ->
   check questionnaireId, String
   LessonsLearned.find(
     {questionnaireId: questionnaireId, userId: this.userId},
     {sort: {createdAt: -1}}
-        </code></pre>
+          </code></pre>
 
-        <pre><code class="coffeescript" data-trim>
+          <pre><code class="coffeescript" data-trim>
 # server- and client-side code
 Router.route '/questionnaires/:_id/passes', {
   name: 'questionnairePasses'
@@ -524,8 +525,39 @@ Router.route '/questionnaires/:_id/passes', {
   ]
   data: () -> Questionnaires.findOne this.params._id
 }
-        </code></pre>
-      </div>
+          </code></pre>
+          <p><small>arrow-down for more on publish / subscribe</small></p>
+        </div>
+      </section>
+
+      <section>
+        <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Auto-publish: Turn it off!</h2></div>
+        <div>
+          <p><img src="images/autopublish.png" width="50%" /></p>
+          <p class="citation"><small>from Discover Meteor</small></p>
+        </div>
+      </section>
+      <section>
+        <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Publish full collections</h2></div>
+        <div>
+          <p><img src="images/publish-full-collection.png" width="50%" /></p>
+          <p class="citation"><small>from Discover Meteor</small></p>
+        </div>
+      </section>
+      <section>
+        <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Publish partial collections</h2></div>
+        <div>
+          <p><img src="images/publish-partial-collection.png" width="50%" /></p>
+          <p class="citation"><small>from Discover Meteor</small></p>
+        </div>
+      </section>
+      <section>
+        <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Publish partial properties</h2></div>
+        <div>
+          <p><img src="images/publish-partial-properties.png" width="50%" /></p>
+          <p class="citation"><small>from Discover Meteor</small></p>
+        </div>
+      </section>
     </section>
 
     <section>
