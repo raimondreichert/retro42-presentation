@@ -558,6 +558,35 @@ Template.lessonsLearnedTemplate.events
     </section>
 
     <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Using reactivity </h2></div>
+      <div>
+        <p>Making our relative time stamps react to language change:</p>
+        <pre><code class="coffeescript" data-trim>
+Template.lessonsLearnedTemplate.helpers
+  createdAtRelative: () ->
+    share.languageDependency.depend()
+    # make this computation dependent on a shared dependency
+    moment(this.createdAt).format('YYYY-MM-DD HH:mm')
+        </code></pre>
+      </div>
+      <pre><code class="coffeescript" data-trim>
+# client/startup.coffee
+Meteor.startup () ->
+  share.languageDependency = new Deps.Dependency
+      </code></pre>
+      <pre><code class="coffeescript" data-trim>
+# client/templates/header.coffee
+Template.header.events
+  'click .tap-i18n-buttons button': () ->
+    newLanguage = TAPi18n.getLanguage()
+    accountsUIBootstrap3.setLanguage newLanguage
+    moment.locale newLanguage
+    share.languageDependency.changed()
+    # forces re-computation of all dependent computations
+      </code></pre>
+    </section>
+
+    <section>
       <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Meteor: Finding files</h2></div>
       <div>
         <ul>
