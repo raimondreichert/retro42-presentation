@@ -173,6 +173,15 @@
     </section>
 
     <section>
+      <div id="title-box"><p class="no-margin">Why did we choose Meteor?</p><h2>In 2015, what would you choose?</h2></div>
+      <div>
+        <img src="images/which-web-app-framework.png" width="100%"/>
+        <p>So many web and mobile app development options, yet still no clear winner emerges... making each option a risk with regards to long-term maintainability.</p>
+        <p>We chose to Meteor because it implements an approach which is quite different from what we've  gotten used to.</p>
+      </div>
+    </section>
+
+    <section>
       <div id="title-box"><p class="no-margin">Why did we choose Meteor?</p><h2>Integrated development plattform</h2></div>
       <div>
         <img src="images/meteor-diy-comparison.png" width="60%"/>
@@ -548,8 +557,17 @@ Template.lessonsLearnedTemplate.events
       </div>
     </section>
 
-
-
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Meteor: Finding files</h2></div>
+      <div>
+        <ul>
+          <li>No matter where you put your code in the /client directory, Meteor will find it and compile it properly.</li>
+          <li>Code inside folders that are not client/ or server/ (e.g. lib/) will run in both contexts.</li>
+          <li>This means you never need to manually write include paths for JavaScript or CSS files...</li>
+          <li>... however, you also don't explicitely see dependencies...</li>
+        </ul>
+      </div>
+    </section>
 
     <!-- =================================================================================== -->
     <!-- =================================================================================== -->
@@ -663,37 +681,46 @@ Template.lessonsLearnedTemplate.events
 		</section>
 
     <!-- =================================================================================== -->
-    <section>
-        <div id="title-box">
-            <h2>Meteor: Finding files</h2>
-
-            <p>No matter where you put your code in the /client directory, Meteor
-                will find it and compile it properly.</p>
-
-            <p>Code inside folders that are not client/ or server/ (e.g. lib/) will run in both contexts.</p>
-
-            <p>This means you never need to manually write include paths for
-                JavaScript or CSS files.</p>
-        </div>
-    </section>
-
-
     <!-- =================================================================================== -->
     <section>
-        <div id="title-box">
-            <h2>Meteor: Collections</h2>
-        </div>
-
-        <p>Declaring collection e.g. in lib/collections/posts.js: Posts = new Mongo.Collection('posts');</p>
-
-        <ul>
-            <li>Server-side: the collection acts as an API into your Mongo database</li>
-            <li>Client-side: the collection is a local, in-browser cache of the real Mongo collection. Meteor’s
-                client-side Mongo implementation is called MiniMongo.
-            </li>
-        </ul>
-
+      <div id="title-box"><h1 style="margin-bottom:0">Backup Slides</h1></div>
     </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Backup Slides</p><h2>Pair Programming Recommended</h2></div>
+      <div>
+        <img src="images/pair-programming.png" width="80%"/>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Backup Slides</p><h2>JavaScript: Maintenance...?</h2></div>
+      <div class="smaller">
+        <p>Stefan Hanenberg et al. <span class="highlight">An empirical study on the impact of static typing on software maintainability</span>. Empirical Software Engineering, <br/>Oct. 2014, Vol. 19, No. 5, pp 1335-1382.</p>
+        <ul>
+          <li>Static type systems help use a new set of classes – an effective form of self-documentation</li>
+          <li class="highlight">We believe the most important result is that the static type systems showed a clear tendency in class identification tasks,<br/> and that we found a first indicator that this is caused by a reduced navigation effort.</li>
+          <li>Static type systems make it easier for humans and reduce the effort to fix type errors.</li>
+          <li>For fixing semantic errors, we observed no difference with respect to development times, and static type systems may not be helpful in preventing semantic errors.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Backup Slides</p><h2>JavaScript: Best Practices!</h2></div>
+      <div>
+        <h2 class="highlight">急がばまわれ</h2>
+        <p>Isogaba maware: <span class="highlight">When you are in hurry, take your time</span></p>
+        <ul>
+          <li>Testing: Automated tests at all levels</li>
+          <li>SOLID design, and remember the Law of Demeter</li>
+          <li>Dependencies: Use a consistent namespaces scheme</li>
+          <li>Documentation: Document your APIs</li>
+          <li>Continuous Integration, ...</li>
+        </ul>
+      </div>
+    </section>
+
   </div>
 </div>
 
