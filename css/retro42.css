@@ -1,3 +1,7 @@
+.reveal .muted {
+	color: grey;
+}
+
 .reveal .code-inline {
 	font-weight: bold;
 }
