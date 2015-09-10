@@ -691,7 +691,7 @@ Template.lessonsLearnedTemplate.events
     </section>
 
     <section>
-      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Using reactivity </h2></div>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Using reactivity</h2></div>
       <div>
         <p>Making our relative time stamps react to language change:</p>
         <pre><code class="coffeescript" data-trim>
@@ -716,6 +716,37 @@ Template.header.events
     moment.locale newLanguage
     share.languageDependency.changed()
     # forces re-computation of all dependent computations
+      </code></pre>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Did you notice? No callbacks!</h2></div>
+      <div>
+        <p>We've implemented the "lessons learned" feature without any callbacks! In many cases, Meteor takes care of the asynchronicity and the callbacks necessary to deal with it.</p>
+        <p class="highlight">If you need to explicitely call a server-side function, use <code class="code-inline">Meteor.call</code>. Using a <code class="code-inline">ReactiveVar</code>, it's easy to update the UI reactively.</p>
+        <p>In our project, we only used <code class="code-inline">Meteor.call</code> nine times, some due to Mini-MongoDb limitations (no aggregations).</p>
+    </section>
+
+    <section>
+      <div id="title-box"><p class="no-margin">Show me some code!</p><h2>Meteor.call, ReactiveVar example</h2></div>
+      <div>
+        <pre><code class="coffeescript" data-trim>
+_numericAnswersChartVar = new ReactiveVar null
+
+Template.questionnaireQuestionView.helpers
+  numericAnswersChart: () -> _numericAnswersChartVar.get()
+
+Template.questionnaireQuestionView.onRendered () ->
+  questionnaire = this.data
+  Meteor.call 'questionnaireQuestionAnswers', Router.current().params._id,
+      Router.current().params._questionUuid, (error, result) ->
+    if error then return share.showErrorMessage error.reason
+    question = share._question questionnaire
+    if question.type is 'numeric'
+      timeSeries = _.map result,
+        (answer) -> [answer.createdAt.getTime(), parseFloat(answer.value)]
+      numericChart = _numericChart timeSeries.reverse(), questionnaire
+      _numericAnswersChartVar.set numericChart # update ReactiveVar
       </code></pre>
     </section>
 
@@ -753,6 +784,7 @@ Template.header.events
           <li>It took us much less preparation time to get productive with Meteor than with the MEAN stack</li>
           <li>It also felt like we were much <span class="highlight">more productive</span> once we were up and running: we overestimated our effort by 50%</li>
           <li>Blaze <span class="highlight">easier to learn</span>, whereas Angular can be overwhelming with all its concepts</li>
+          <li><span class="highlight">More straight-forward code</span> because we rarely had to deal with keeping track of callbacks and/or promises.</li>
         </ul>
       </div>
     </section>
@@ -764,7 +796,7 @@ Template.header.events
           <li>No time spent on <span class="highlight">build system</span> (e.g. Grunt, Gulp)</li>
           <li>Simple <span class="highlight">dependency management</span>, with versions always automatically fixed by Meteor</li>
           <li>Only one dependency management systemm, not two (i.e. npm, bower)</li>
-          <li>Much less boiler-plate code to publish data to client</li>
+          <li><span class="highlight">Much less boiler-plate code</span> to publish data to client</li>
         </ul>
       </div>
     </section>
