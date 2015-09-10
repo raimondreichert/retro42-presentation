@@ -296,6 +296,19 @@ Messages.update myMessages[0]._id, {$set: {important: true}}
           <p class="citation"><small>see <a href="http://docs.meteor.com/#/full/mongo_collection">docs.meteor.com/#/full/mongo_collection</a></small></p>
         </div>
       </section>
+      <section>
+        <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Mini-MongoDb limitations</h2></div>
+        <div>
+          <p>In its current release, Minimongo has some limitations:</p>
+          <ul>
+            <li>$pull in modifiers only accepts certain kinds of selectors.</li>
+            <li>findAndModify, <span class="highlight">aggregate functions, and map/reduce aren't supported.</span></li>
+            <li>Minimongo doesn't currently have indexes. It's rare for this to be an issue, since it's unusual for a client to have enough data that an index is worthwhile.</li>
+          </ul>
+          <p>All of these will be addressed in a future release.</p>
+          <p class="citation"><small>see <a href="http://docs.meteor.com/#/full/mongo_collection">docs.meteor.com/#/full/mongo_collection</a></small></p>
+        </div>
+      </section>
     </section>
 
 
