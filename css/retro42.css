@@ -2,6 +2,9 @@
 	position:absolute;
 	bottom:0;
 	right:0;
+	font-weight: bold;
+	color: yellow;
+	font-family: "Helvetica, sans-serif";
 }
 
 .reveal .muted {
