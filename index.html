@@ -791,16 +791,7 @@ Template.questionnaireQuestionView.onRendered () ->
           <li>Simple <span class="highlight">dependency management</span>, with versions always automatically fixed by Meteor</li>
           <li>Only one dependency management systemm, not two (i.e. npm, bower)</li>
           <li><span class="highlight">Much less boiler-plate code</span> to publish data to client</li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>What they have in common</h2></div>
-      <div>
-        <ul>
-          <li>Easy deployment to Heroku with <br/><code style="font-weight:bold">git push heroku master</code></li>
-          <li>Easy to add authentification mechanisms for plattforms such as Google, Facebook</li>
+          <li>Great and <span class="highlight">easy to add packages</span>, e.g. to add authentification for plattforms such as Google, Facebook, run <code class="code-inline">meteor add accounts-google</code>, then add <code class="code-inline">{{> loginButtons}}</code> in your template to show the login UI, and you're done.</li>
         </ul>
       </div>
     </section>
@@ -880,7 +871,9 @@ Template.questionnaireQuestionView.onRendered () ->
     <section>
       <div id="title-box"><h1>Conclusion</h1></div>
       <div>
-        <p>TBD</p>
+        <p><img src="images/MEAN stack vs Meteor.png" width="80%"/></p>
+        <p>Meteor = MEAN stack + Socket.IO + grunt/gulp + Cordova + hot code reload + a lot more.</p>
+        <p class="citation"><small>from <a href="http://wiki.dandascalescu.com/essays/meteor_js_vs_the_mean_stack">wiki.dandascalescu.com/essays/meteor_js_vs_the_mean_stack</a>, <br/>see also <a href="http://wiki.dandascalescu.com/essays/why_meteor">wiki.dandascalescu.com/essays/why_meteor</a></small></p>
       </div>
     </section>
 
