@@ -771,41 +771,52 @@ Template.questionnaireQuestionView.onRendered () ->
     </section>
 
     <section>
-      <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>What we liked better</h2></div>
-      <div>
-        <ul>
-          <li><span class="highlight">Less code, more functionality</span></li>
-          <li>It took us much less preparation time to get productive with Meteor than with the MEAN stack</li>
-          <li>It also felt like we were much <span class="highlight">more productive</span> once we were up and running: we overestimated our effort by 50%</li>
-          <li>Blaze <span class="highlight">easier to learn</span>, whereas Angular can be overwhelming with all its concepts</li>
-          <li><span class="highlight">More straight-forward code</span> because we rarely had to deal with keeping track of callbacks and/or promises.</li>
-        </ul>
-      </div>
-    </section>
+      <section>
+        <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>All-inclusive vs. do-it-yourself</h2></div>
+        <div>
+          <p><img src="images/MEAN stack vs Meteor.png" width="80%"/></p>
+          <p>Meteor = MEAN stack + Socket.IO + grunt/gulp + Cordova + hot code reload + a lot more.</p>
+          <p class="citation"><small>from <a href="http://wiki.dandascalescu.com/essays/meteor_js_vs_the_mean_stack">wiki.dandascalescu.com/essays/meteor_js_vs_the_mean_stack</a>, <br/>see also <a href="http://wiki.dandascalescu.com/essays/why_meteor">wiki.dandascalescu.com/essays/why_meteor</a></small></p>
+          <div class="arrow-down"><small>&darr;</small></div>
+        </div>
+      </section>
+      <section>
+        <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>What we liked better</h2></div>
+        <div>
+          <ul>
+            <li><span class="highlight">Less code, more functionality</span></li>
+            <li>It took us much less preparation time to get productive with Meteor than with the MEAN stack</li>
+            <li>It also felt like we were much <span class="highlight">more productive</span> once we were up and running: we overestimated our effort by 50%</li>
+            <li>Blaze <span class="highlight">easier to learn</span>, whereas Angular can be overwhelming with all its concepts</li>
+            <li><span class="highlight">More straight-forward code</span> because we rarely had to deal with keeping track of callbacks and/or promises.</li>
+          </ul>
+        </div>
+      </section>
 
-    <section>
-      <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>What we liked better</h2></div>
-      <div>
-        <ul>
-          <li>No time spent on <span class="highlight">build system</span> (e.g. Grunt, Gulp)</li>
-          <li>Simple <span class="highlight">dependency management</span>, with versions always automatically fixed by Meteor</li>
-          <li>Only one dependency management systemm, not two (i.e. npm, bower)</li>
-          <li><span class="highlight">Much less boiler-plate code</span> to publish data to client</li>
-          <li>Great and <span class="highlight">easy to add packages</span>, e.g. to add authentification for plattforms such as Google, Facebook, run <code class="code-inline">meteor add accounts-google</code>, then add <code class="code-inline">{{> loginButtons}}</code> in your template to show the login UI, and you're done.</li>
-        </ul>
-      </div>
-    </section>
+      <section>
+        <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>What we liked better</h2></div>
+        <div>
+          <ul>
+            <li>No time spent on <span class="highlight">build system</span> (e.g. Grunt, Gulp)</li>
+            <li>Simple <span class="highlight">dependency management</span>, with versions always automatically fixed by Meteor</li>
+            <li>Only one dependency management systemm, not two (i.e. npm, bower)</li>
+            <li><span class="highlight">Much less boiler-plate code</span> to publish data to client</li>
+            <li>Great and <span class="highlight">easy to add packages</span>, e.g. to add authentification for plattforms such as Google, Facebook, run <code class="code-inline">meteor add accounts-google</code>, then add <code class="code-inline">{{> loginButtons}}</code> in your template to show the login UI, and you're done.</li>
+          </ul>
+        </div>
+      </section>
 
-    <section>
-      <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>What we liked less</h2></div>
-      <div>
-        <ul>
-          <li>Best practices on how to organize the code?</lI>
-          <li>Live reload in browser is slower because app must be assembled and precompiled by Meteor</li>
-          <li>Testing framework Velocity was a late addition to Meteor, and there is little support from Meteor for writing tests</li>
-          <li>For webtests, Velocity uses the Robot Famework which utilizes the keyword-driven testing approach: however, we would have preferred a more Protractor-like approach</li>
-        </ul>
-      </div>
+      <section>
+        <div id="title-box"><p class="no-margin">Comparing Meteor vs. MEAN</p><h2>What we liked less</h2></div>
+        <div>
+          <ul>
+            <li>Best practices on how to organize the code?</lI>
+            <li>Live reload in browser is slower because app must be assembled and precompiled by Meteor</li>
+            <li>Testing framework Velocity was a late addition to Meteor, and there is little support from Meteor for writing tests</li>
+            <li>For webtests, Velocity uses the Robot Famework which utilizes the keyword-driven testing approach: however, we would have preferred a more Protractor-like approach</li>
+          </ul>
+        </div>
+      </section>
     </section>
 
     <section>
@@ -871,9 +882,6 @@ Template.questionnaireQuestionView.onRendered () ->
     <section>
       <div id="title-box"><h1>Conclusion</h1></div>
       <div>
-        <p><img src="images/MEAN stack vs Meteor.png" width="80%"/></p>
-        <p>Meteor = MEAN stack + Socket.IO + grunt/gulp + Cordova + hot code reload + a lot more.</p>
-        <p class="citation"><small>from <a href="http://wiki.dandascalescu.com/essays/meteor_js_vs_the_mean_stack">wiki.dandascalescu.com/essays/meteor_js_vs_the_mean_stack</a>, <br/>see also <a href="http://wiki.dandascalescu.com/essays/why_meteor">wiki.dandascalescu.com/essays/why_meteor</a></small></p>
       </div>
     </section>
 
