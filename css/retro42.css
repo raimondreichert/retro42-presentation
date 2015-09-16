@@ -1,3 +1,7 @@
+.reveal table.issues {
+		font-size: small;
+}
+
 .reveal .arrow-down {
 	position:absolute;
 	bottom:0;
