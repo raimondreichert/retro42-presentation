@@ -317,6 +317,106 @@ Messages.update myMessages[0]._id, {$set: {important: true}}
       </section>
     </section>
 
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>From event-driven-programming... </h2></div>
+      <div>
+        <pre><code class="javascript" data-trim style="background: url('images/spaceship.png') no-repeat top right #3F3F3F">
+var spaceship = {
+
+  _temperature: 0, _listeners: [],
+
+  getTemperature: function() {
+    return this._temperature;
+  },
+
+  setTemperature: function(value) {
+    this._temperature = value;
+    this.changed();
+  },
+
+  // to be continued
+};
+        </code></pre>
+        <p class="citation"><small>from <a href="http://stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming">stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming</a></small></p>
+      </div>
+    </section>
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>From event-driven-programming... </h2></div>
+      <div>
+        <pre><code class="javascript" data-trim>
+var spaceship = { // code from previous slide
+  changed: function() {
+    for (var i=0;i< this._listeners.length;i++) {
+      this._listeners[i]();
+    }
+  },
+
+  onChanged: function(func) {
+    this._listeners.push(func);
+  }
+};
+        </code></pre>
+        <pre><code class="javascript" data-trim>
+// observer updates dashboard when temperature changes
+spaceship.onChanged(function() {
+  var temp = spaceship.getTemperature();
+  gauge.setValue(temp);
+});
+</code></pre>
+        <p class="citation"><small>from <a href="http://stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming">stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming</a></small></p>
+      </div>
+    </section>
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>... towards reactive programming</h2></div>
+      <div>
+        <pre><code class="javascript" data-trim style="background: url('images/spaceship.png') no-repeat top right #3F3F3F">
+var spaceship = {
+
+  _temperature: 0,
+  _temperatureDepend: new Tracker.Dependency,
+
+  getTemperature: function() {
+    this._temperatureDepend.depend();
+    return this._temperature;
+  },
+
+  setTemperature: function(value) {
+    this._temperature = value;
+    this._temperatureDepend.changed();
+  }
+};
+        </code></pre>
+        <p class="citation"><small>from <a href="http://stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming">stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming</a></small></p>
+      </div>
+    </section>
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>... towards reactive programming</h2></div>
+      <div>
+        <pre><code class="javascript" data-trim>
+// Tracker updates dashboard when temperature changes
+Tracker.autorun(function() {
+  var temp = spaceship.getTemperature();
+  gauge.setValue(temp);
+});
+        </code></pre>
+        <p class="highlight">The function passed to Tracker.autorun() is rerun automatically whenever any of its dependencies change.</p>
+        <p class="citation"><small>from <a href="http://stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming">stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming</a></small></p>
+      </div>
+    </section>
+    <section>
+      <div id="title-box"><p class="no-margin">What is Meteor?</p><h2>Meteor Reactivity is Transparent</h2></div>
+      <div style="">
+        <p>You rarely work with Tracker Dependency directly. Instead, you work with Meteor's reactive data sources such as:</p>
+        <ul>
+          <li>Session object</li>
+          <li>Reactive variables</li>
+          <li>Minimongo</li>
+          <li>Meteor.user(), Meteor.status()</li>
+        </ul>
+        <p>These objects create Tracker dependency objects for you internally: you get reactivity for free (transparently).</p>
+        <p class="citation"><small>from <a href="http://stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming">stephenwalther.com/archive/2014/12/05/dont-do-react-understanding-meteor-reactive-programming</a></small></p>
+      </div>
+    </section>
 
     <section>
       <section>
