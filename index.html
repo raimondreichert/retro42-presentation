@@ -423,13 +423,13 @@ Messages.update myMessages[0]._id, {$set: {important: true}}
         <div>
           <p>In this example, <code style="font-weight:bold">url</code> and <code style="font-weight:bold">title</code> come from a <code style="font-weight:bold">post</code> object, whereas <code style="font-weight:bold">domain</code> is a call to a template helper function:</p>
           <pre><code class="html" data-trim>
-  <template name="postItem">
+<template name="postItem">
   <div class="post">
      <div class="post-content">
          <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
      </div>
   </div>
-  </template>
+</template>
           </code></pre>
           <pre><code class="coffeescript" data-trim>
 Template.postItem.helpers
