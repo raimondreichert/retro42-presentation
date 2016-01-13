@@ -1,3 +1,23 @@
+.reveal .title-slide {
+	text-align: left;
+}
+
+.reveal .title-slide h1.title {
+	color: rgb(229, 38, 31);
+	padding-top: 25px;
+	margin-bottom: 0;
+}
+
+.reveal .title-slide h2.subtitle {
+	color: rgb(229, 38, 31);
+	font-size: 1.5em;
+	padding-bottom: 20px;
+}
+
+.reveal .title-slide p.authors {
+	color: rgb(128, 128, 128);
+}
+
 .reveal table.issues {
 		font-size: small;
 }
